@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 ansiColor('xterm') {
-                    sh "build.sh --tag $epitest_docker_tag"
+                    sh "./build.sh --tag $epitest_docker_tag"
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
             }
             steps {
                 ansiColor('xterm') {
-                    sh "build.sh --tag latest"
+                    sh "./build.sh --tag latest"
                 }
             }
         }

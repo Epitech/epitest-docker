@@ -114,6 +114,8 @@ RUN dnf -y install dnf-plugins-core &&      \
         xz.x86_64                           \
         zip.x86_64                          \
         zsh.x86_64                          \
+        gtest.x86_64                        \
+        gtest-devel.x86_64                  \
     && dnf -y update vim-minimal            \
     && dnf -y install vim                   \
     && dnf clean all -y                     \

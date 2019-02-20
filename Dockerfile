@@ -97,6 +97,7 @@ RUN dnf -y install dnf-plugins-core &&      \
         rlwrap.x86_64                       \
         ruby                                \
         ruby.x86_64                         \
+        socat                         	    \
         strace.x86_64                       \
         sudo.x86_64                         \
         systemd-devel                       \

@@ -11,6 +11,10 @@ RUN dnf -y install dnf-plugins-core &&      \
         SDL2-devel                          \
         SDL2-devel.x86_64                   \
         SDL2-static.x86_64                  \
+        SDL2_ttf.x86_64                     \
+        SDL2_ttf-devel.x86_64               \
+        SDL2_image.x86_64                   \
+        SDL2_image-devel.x86_64             \
         SFML.x86_64                         \
         SFML-devel.x86_64                   \
         autoconf                            \

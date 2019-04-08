@@ -124,7 +124,7 @@ RUN dnf -y install dnf-plugins-core &&      \
     && dnf -y install vim                   \
     && dnf clean all -y                     \
     && pip3 install --upgrade pip	    \
-    && pip3 install -Iv pexpect==4.0.1 pyrser==0.2.0 cnorm==4.0.5 gcovr==4.1 conan==1.9.0 pycrypto==2.6.1 requests==2.19.1
+    && pip3 install -Iv pexpect==4.0.1 pyrser==0.2.0 cnorm==4.0.5 gcovr==4.1 conan==1.9.0 pycrypto==2.6.1 requests==2.19.1 tensorflow==1.13.1
 
 RUN cd /tmp \
     && git clone https://github.com/selectel/pyte.git \

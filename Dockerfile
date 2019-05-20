@@ -120,6 +120,8 @@ RUN dnf -y install dnf-plugins-core &&      \
         zsh.x86_64                          \
         gtest.x86_64                        \
         gtest-devel.x86_64                  \
+        irrlicht.x86_64                     \
+        irrlicht-devel.x86_64               \
     && dnf -y update vim-minimal            \
     && dnf -y install vim                   \
     && dnf clean all -y                     \

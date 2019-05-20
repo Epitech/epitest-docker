@@ -17,6 +17,8 @@ RUN dnf -y install dnf-plugins-core &&      \
         SDL2_image-devel.x86_64             \
         SFML.x86_64                         \
         SFML-devel.x86_64                   \
+        irrlicht.x86_64                     \
+        irrlicht-devel.x86_64               \
         autoconf                            \
         automake                            \
         boost                               \

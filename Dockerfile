@@ -1,4 +1,4 @@
-FROM fedora:28
+FROM fedora:30
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
 
 RUN dnf -y install dnf-plugins-core &&      \
@@ -42,8 +42,8 @@ RUN dnf -y install dnf-plugins-core &&      \
         gmp-devel.x86_64                    \
         golang                              \
         gradle                              \
-        java-1.8.0-openjdk                  \
-        java-1.8.0-openjdk-devel            \
+        java-openjdk                        \
+        java-openjdk-devel                  \
         ksh.x86_64                          \
         libX11-devel.x86_64                 \
         libXext-devel.x86_64                \
@@ -127,7 +127,7 @@ RUN dnf -y install dnf-plugins-core &&      \
     && dnf -y install vim                   \
     && dnf clean all -y                     \
     && pip3 install --upgrade pip	    \
-    && pip3 install -Iv pexpect==4.0.1 pyrser==0.2.0 cnorm==4.0.5 gcovr==4.1 conan==1.9.0 pycrypto==2.6.1 requests==2.19.1
+    && pip3 install -Iv gcovr==4.1 conan==1.15.1 pycrypto==2.6.1 requests==2.22.0 pyte==0.8.0
 
 RUN cd /tmp \
     && git clone https://github.com/selectel/pyte.git \
@@ -139,7 +139,7 @@ RUN cd /tmp \
     && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.2/libcriterion-devel-v2.3.2-0.x86_64.rpm \
     && cd /tmp && git clone https://github.com/runkit7/runkit7.git \
     && cd runkit7 \
-    && git checkout 7ddbbb0d4784751a55eac0f4f425fbc2e1d249f6 \
+    && git checkout 84e5b5e04af239c9d79b09be1b1dc0d0ac23b477 \
     && phpize && ./configure && make && make install \
     && cd \
     && rm -rf /tmp/runkit7 \

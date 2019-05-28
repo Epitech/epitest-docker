@@ -5,8 +5,8 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-SFML_SOURCE_URL="http://www.sfml-dev.org/files/SFML-2.4.2-sources.zip"
-CSFML_SOURCE_URL="http://www.sfml-dev.org/files/CSFML-2.4-sources.zip"
+SFML_SOURCE_URL="https://www.sfml-dev.org/files/SFML-2.5.1-sources.zip"
+CSFML_SOURCE_URL="https://www.sfml-dev.org/files/CSFML-2.5-sources.zip"
 
 CSFML_ZIP="CSFML.zip"
 SFML_ZIP="SFML.zip"

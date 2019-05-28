@@ -23,6 +23,7 @@ RUN dnf -y install dnf-plugins-core &&      \
         boost-devel.x86_64                  \
         boost-graph                         \
         boost-math                          \
+        boost-static.x86_64                 \
         ca-certificates.noarch              \
         clang.x86_64                        \
         cmake.x86_64                        \

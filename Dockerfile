@@ -136,16 +136,7 @@ RUN cd /tmp \
     && python3 setup.py install \
     && cd \
     && rm -rf /tmp/pyte \
-    && cd /tmp && git clone --branch v2.3.2 https://github.com/Snaipe/Criterion \
-    && cd Criterion \
-    && mkdir build \
-    && cd build \
-    && cmake -DCMAKE_INSTALL_PREFIX=/usr .. \
-    && cmake --build . \
-    && make install \
-    && ldconfig \
-    && cd \
-    && rm -rf /tmp/Criterion \
+    && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.2/libcriterion-devel-v2.3.2-0.x86_64.rpm \
     && cd /tmp && git clone https://github.com/runkit7/runkit7.git \
     && cd runkit7 \
     && git checkout 7ddbbb0d4784751a55eac0f4f425fbc2e1d249f6 \

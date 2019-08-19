@@ -48,6 +48,7 @@ RUN dnf -y install dnf-plugins-core         \
         java-openjdk                        \
         java-openjdk-devel                  \
         ksh.x86_64                          \
+        langpacks-en                        \
         libX11-devel.x86_64                 \
         libXext-devel.x86_64                \
         libgudev-devel                      \
@@ -134,7 +135,8 @@ RUN dnf -y install dnf-plugins-core         \
     && pip3 install --upgrade pip	    \
     && pip3 install -Iv gcovr==4.1 conan==1.15.1 pycrypto==2.6.1 requests==2.22.0 pyte==0.8.0
 
-RUN cd /tmp \
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
+    && cd /tmp \
     && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.2/libcriterion-devel-v2.3.2-0.x86_64.rpm \
     && git clone https://github.com/runkit7/runkit7.git \
     && cd runkit7 \
@@ -147,7 +149,6 @@ RUN cd /tmp \
     && mv /tmp/sbt /usr/local/share \
     && ln -s '/usr/local/share/sbt/bin/sbt' '/usr/local/bin' \
     && curl -sSL https://raw.githubusercontent.com/ocaml/opam/2.0.0-beta6/shell/opam_installer.sh | sh -s /usr/local/bin
-
 
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8
 

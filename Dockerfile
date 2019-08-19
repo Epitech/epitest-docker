@@ -135,14 +135,8 @@ RUN dnf -y install dnf-plugins-core         \
     && pip3 install -Iv gcovr==4.1 conan==1.15.1 pycrypto==2.6.1 requests==2.22.0 pyte==0.8.0
 
 RUN cd /tmp \
-    && git clone https://github.com/selectel/pyte.git \
-    && cd pyte \
-    && git checkout 358dea5b9ea11eeab6c6ed8fb73c220550e17e26 \
-    && python3 setup.py install \
-    && cd \
-    && rm -rf /tmp/pyte \
     && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.2/libcriterion-devel-v2.3.2-0.x86_64.rpm \
-    && cd /tmp && git clone https://github.com/runkit7/runkit7.git \
+    && git clone https://github.com/runkit7/runkit7.git \
     && cd runkit7 \
     && git checkout 84e5b5e04af239c9d79b09be1b1dc0d0ac23b477 \
     && phpize && ./configure && make && make install \

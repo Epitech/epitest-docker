@@ -1,8 +1,9 @@
 FROM fedora:30
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
 
-RUN dnf -y install dnf-plugins-core &&      \
-        dnf -y copr enable @dotnet-sig/dotnet \
+RUN dnf -y install dnf-plugins-core         \
+        && dnf -y copr enable @dotnet-sig/dotnet \
+        && dnf -y copr enable petersen/stack2 \
         && dnf -y install                   \
         CUnit-devel.x86_64                  \
         SDL-devel.x86_64                    \
@@ -35,6 +36,7 @@ RUN dnf -y install dnf-plugins-core &&      \
         gcc-c++.x86_64                      \
         gcc.x86_64                          \
         gdb.x86_64                          \
+        ghc                                 \
         git                                 \
         glibc-devel.x86_64                  \
         glibc-locale-source.x86_64          \
@@ -102,6 +104,7 @@ RUN dnf -y install dnf-plugins-core &&      \
         rlwrap.x86_64                       \
         ruby                                \
         ruby.x86_64                         \
+        stack.x86_64                        \
         strace.x86_64                       \
         sudo.x86_64                         \
         systemd-devel                       \
@@ -144,9 +147,6 @@ RUN cd /tmp \
     && cd \
     && rm -rf /tmp/runkit7 \
     && cd /tmp \
-    && curl -LsS "https://github.com/commercialhaskell/stack/releases/download/v1.9.1/stack-1.9.1-linux-x86_64-static.tar.gz" | tar xzv \
-	&& cp stack-1.9.1-linux-x86_64-static/stack /usr/local/bin/ \
-    && chmod 0755 /usr/local/bin/stack \
     && curl -sSL "https://github.com/sbt/sbt/releases/download/v1.0.4/sbt-1.0.4.tgz" | tar xz \
     && mv /tmp/sbt /usr/local/share \
     && ln -s '/usr/local/share/sbt/bin/sbt' '/usr/local/bin' \

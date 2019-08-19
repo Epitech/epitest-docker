@@ -26,6 +26,7 @@ RUN dnf -y install dnf-plugins-core         \
         boost-math                          \
         boost-static.x86_64                 \
         ca-certificates.noarch              \
+        cargo                               \
         clang.x86_64                        \
         cmake.x86_64                        \
         curl.x86_64                         \
@@ -104,6 +105,7 @@ RUN dnf -y install dnf-plugins-core         \
         rlwrap.x86_64                       \
         ruby                                \
         ruby.x86_64                         \
+        rust                                \
         stack.x86_64                        \
         strace.x86_64                       \
         sudo.x86_64                         \

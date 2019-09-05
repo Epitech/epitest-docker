@@ -26,24 +26,20 @@ RUN dnf -y install dnf-plugins-core         \
         boost-math                          \
         boost-static.x86_64                 \
         ca-certificates.noarch              \
-        cargo                               \
         clang.x86_64                        \
         cmake.x86_64                        \
         curl.x86_64                         \
-        dotnet-sdk-2.1                      \
         elfutils-libelf-devel.x86_64        \
         flac-devel.x86_64                   \
         freetype-devel.x86_64               \
         gcc-c++.x86_64                      \
         gcc.x86_64                          \
         gdb.x86_64                          \
-        ghc                                 \
         git                                 \
         glibc-devel.x86_64                  \
         glibc-locale-source.x86_64          \
         glibc.x86_64                        \
         gmp-devel.x86_64                    \
-        golang                              \
         gradle                              \
         java-openjdk                        \
         java-openjdk-devel                  \
@@ -69,29 +65,9 @@ RUN dnf -y install dnf-plugins-core         \
         net-tools                           \
         net-tools.x86_64                    \
         nc                                  \
-        nodejs                              \
-        ocaml                               \
-        ocaml-camlp4.x86_64                 \
-        ocaml.x86_64                        \
         openal-soft-devel.x86_64            \
     	openssl-devel                       \
         patch                               \
-        php.x86_64                          \
-        php-devel.x86_64                    \
-        php-bcmath.x86_64                   \
-        php-cli.x86_64                      \
-        php-devel.x86_64                    \
-        php-gd.x86_64                       \
-        php-mbstring.x86_64                 \
-        php-mysqlnd.x86_64                  \
-        php-pdo.x86_64                      \
-        php-pear.noarch                     \
-        php-json.x86_64                     \
-        php-pdo.x86_64                      \
-        php-xml.x86_64                      \
-        php-gettext-gettext.noarch          \
-        php-phar-io-version.noarch          \
-        php-theseer-tokenizer.noarch        \
         procps-ng.x86_64                    \
         python2-numpy.x86_64                \
         python2-virtualenv                  \
@@ -104,10 +80,6 @@ RUN dnf -y install dnf-plugins-core         \
     	qt5                                 \
         qt5-devel                           \
         rlwrap.x86_64                       \
-        ruby                                \
-        ruby.x86_64                         \
-        rust                                \
-        stack.x86_64                        \
         strace.x86_64                       \
         sudo.x86_64                         \
         systemd-devel                       \
@@ -131,8 +103,42 @@ RUN dnf -y install dnf-plugins-core         \
         irrlicht-devel.x86_64               \
     && dnf -y update vim-minimal            \
     && dnf -y install vim                   \
-    && dnf clean all -y                     \
-    && pip3 install --upgrade pip	    \
+    && dnf clean all -y
+
+RUN dnf -y copr enable @dotnet-sig/dotnet \
+        && dnf -y copr enable petersen/stack2 \
+        && dnf -y install                   \
+        cargo                               \
+        dotnet-sdk-2.1                      \
+        ghc                                 \
+        golang                              \
+        nodejs                              \
+        ocaml                               \
+        ocaml-camlp4.x86_64                 \
+        ocaml.x86_64                        \
+        php.x86_64                          \
+        php-devel.x86_64                    \
+        php-bcmath.x86_64                   \
+        php-cli.x86_64                      \
+        php-devel.x86_64                    \
+        php-gd.x86_64                       \
+        php-mbstring.x86_64                 \
+        php-mysqlnd.x86_64                  \
+        php-pdo.x86_64                      \
+        php-pear.noarch                     \
+        php-json.x86_64                     \
+        php-pdo.x86_64                      \
+        php-xml.x86_64                      \
+        php-gettext-gettext.noarch          \
+        php-phar-io-version.noarch          \
+        php-theseer-tokenizer.noarch        \
+        ruby                                \
+        ruby.x86_64                         \
+        rust                                \
+        stack.x86_64                        \
+    && dnf clean all -y
+
+RUN pip3 install --upgrade pip	    \
     && pip3 install -Iv gcovr==4.1 conan==1.15.1 pycrypto==2.6.1 requests==2.22.0 pyte==0.8.0
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \

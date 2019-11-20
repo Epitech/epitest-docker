@@ -138,8 +138,8 @@ RUN dnf -y copr enable @dotnet-sig/dotnet \
         stack.x86_64                        \
     && dnf clean all -y
 
-RUN pip3 install --upgrade pip	    \
-    && pip3 install -Iv gcovr==4.1 conan==1.15.1 pycrypto==2.6.1 requests==2.22.0 pyte==0.8.0
+RUN python3 -m pip install --upgrade pip	    \
+    && python3 -m pip install -Iv gcovr==4.1 conan==1.15.1 pycrypto==2.6.1 requests==2.22.0 pyte==0.8.0
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && cd /tmp \

@@ -143,7 +143,7 @@ RUN python3 -m pip install --upgrade pip	    \
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && cd /tmp \
-    && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.2/libcriterion-devel-v2.3.2-0.x86_64.rpm \
+    && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.3/libcriterion-devel-2.3.3-2.el7.x86_64.rpm \
     && git clone https://github.com/runkit7/runkit7.git \
     && cd runkit7 \
     && git checkout 84e5b5e04af239c9d79b09be1b1dc0d0ac23b477 \

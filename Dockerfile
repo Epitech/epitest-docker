@@ -27,6 +27,7 @@ RUN dnf -y install dnf-plugins-core         \
         boost-static.x86_64                 \
         ca-certificates.noarch              \
         clang.x86_64                        \
+        clang-analyzer                      \
         cmake.x86_64                        \
         curl.x86_64                         \
         elfutils-libelf-devel.x86_64        \

@@ -52,7 +52,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     script {
-                        docker.withRegistry('https://nexus.epitest.eu:9081/', 'nexus-epitest-content-ci') {
+                        docker.withRegistry('https://nexus.epitest.eu:9081/', 'nexus-epitest-ci') {
                             sh "docker tag epitechcontent/epitest-docker:${params.epitest_docker_tag} nexus.epitest.eu:9081/epitechcontent/epitest-docker:${params.epitest_docker_tag}  && docker push nexus.epitest.eu:9081/epitechcontent/epitest-docker:${params.epitest_docker_tag}"
                         }
                         docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-login') {
@@ -71,7 +71,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     script {
-                        docker.withRegistry('https://nexus.epitest.eu:9081/', 'nexus-epitest-content-ci') {
+                        docker.withRegistry('https://nexus.epitest.eu:9081/', 'nexus-epitest-ci') {
                             sh "docker tag epitechcontent/epitest-docker:latest nexus.epitest.eu:9081/epitechcontent/epitest-docker:latest && docker push nexus.epitest.eu:9081/epitechcontent/epitest-docker:latest"
                         }
                         docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-login') {

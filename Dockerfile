@@ -2,7 +2,6 @@ FROM fedora:30
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
 
 RUN dnf -y install dnf-plugins-core         \
-        && dnf -y copr enable @dotnet-sig/dotnet \
         && dnf -y copr enable petersen/stack2 \
         && dnf -y install                   \
         CUnit-devel.x86_64                  \
@@ -50,7 +49,7 @@ RUN dnf -y install dnf-plugins-core         \
         libXext-devel.x86_64                \
         libgudev-devel                      \
         libjpeg-turbo-devel.x86_64          \
-    	libtsan                             \
+        libtsan                             \
         libvorbis-devel.x86_64              \
         llvm.x86_64                         \
         llvm-devel.x86_64                   \
@@ -67,7 +66,7 @@ RUN dnf -y install dnf-plugins-core         \
         net-tools.x86_64                    \
         nc                                  \
         openal-soft-devel.x86_64            \
-    	openssl-devel                       \
+        openssl-devel                       \
         patch                               \
         procps-ng.x86_64                    \
         python2-numpy.x86_64                \
@@ -78,7 +77,7 @@ RUN dnf -y install dnf-plugins-core         \
         python3-virtualenv                  \
         python3-virtualenv-api              \
         python3.x86_64                      \
-    	qt5                                 \
+        qt5                                 \
         qt5-devel                           \
         rlwrap.x86_64                       \
         strace.x86_64                       \
@@ -106,11 +105,12 @@ RUN dnf -y install dnf-plugins-core         \
     && dnf -y install vim                   \
     && dnf clean all -y
 
-RUN dnf -y copr enable @dotnet-sig/dotnet \
+RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc \
+        && wget -q -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/30/prod.repo \
         && dnf -y copr enable petersen/stack2 \
         && dnf -y install                   \
         cargo                               \
-        dotnet-sdk-2.1                      \
+        dotnet-sdk-3.1                      \
         ghc                                 \
         golang                              \
         nodejs                              \

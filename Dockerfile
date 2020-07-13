@@ -1,20 +1,15 @@
-FROM fedora:30
+FROM fedora:32
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
 
 RUN dnf -y install dnf-plugins-core         \
         && dnf -y copr enable petersen/stack2 \
         && dnf -y install                   \
         CUnit-devel.x86_64                  \
-        SDL-devel.x86_64                    \
-        SDL-static.x86_64                   \
         SDL2                                \
-        SDL2-devel                          \
         SDL2-devel.x86_64                   \
         SDL2-static.x86_64                  \
-        SDL2_ttf.x86_64                     \
-        SDL2_ttf-devel.x86_64               \
-        SDL2_image.x86_64                   \
-        SDL2_image-devel.x86_64             \
+        libcaca.x86_64                      \
+        libcaca-devel.x86_64                \
         SFML.x86_64                         \
         SFML-devel.x86_64                   \
         autoconf                            \
@@ -40,9 +35,8 @@ RUN dnf -y install dnf-plugins-core         \
         glibc-locale-source.x86_64          \
         glibc.x86_64                        \
         gmp-devel.x86_64                    \
-        gradle                              \
-        java-openjdk                        \
-        java-openjdk-devel                  \
+        java-latest-openjdk                 \
+        java-latest-openjdk-devel           \
         ksh.x86_64                          \
         langpacks-en                        \
         libX11-devel.x86_64                 \
@@ -57,26 +51,19 @@ RUN dnf -y install dnf-plugins-core         \
         make.x86_64                         \
         maven                               \
         nasm.x86_64                         \
-        ncurses                             \
-        ncurses-devel                       \
         ncurses-devel.x86_64                \
         ncurses-libs                        \
         ncurses.x86_64                      \
-        net-tools                           \
         net-tools.x86_64                    \
         nc                                  \
         openal-soft-devel.x86_64            \
         openssl-devel                       \
         patch                               \
         procps-ng.x86_64                    \
-        python2-numpy.x86_64                \
-        python2-virtualenv                  \
-        python2-virtualenv-api              \
-        python3-curses_ex.x86_64            \
-        python3-numpy.x86_64                \
         python3-virtualenv                  \
         python3-virtualenv-api              \
         python3.x86_64                      \
+        python3-devel.x86_64                \
         qt5                                 \
         qt5-devel                           \
         rlwrap.x86_64                       \
@@ -88,7 +75,6 @@ RUN dnf -y install dnf-plugins-core         \
         tmux.x86_64                         \
         tree.x86_64                         \
         unzip.x86_64                        \
-        valgrind                            \
         valgrind.x86_64                     \
         wget.x86_64                         \
         which.x86_64                        \
@@ -101,12 +87,13 @@ RUN dnf -y install dnf-plugins-core         \
         gtest-devel.x86_64                  \
         irrlicht.x86_64                     \
         irrlicht-devel.x86_64               \
+        aalib                               \
     && dnf -y update vim-minimal            \
     && dnf -y install vim                   \
     && dnf clean all -y
 
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc \
-        && wget -q -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/30/prod.repo \
+        && wget -q -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/32/prod.repo \
         && dnf -y copr enable petersen/stack2 \
         && dnf -y install                   \
         cargo                               \
@@ -114,9 +101,6 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc \
         ghc                                 \
         golang                              \
         nodejs                              \
-        ocaml                               \
-        ocaml-camlp4.x86_64                 \
-        ocaml.x86_64                        \
         php.x86_64                          \
         php-devel.x86_64                    \
         php-bcmath.x86_64                   \
@@ -133,29 +117,22 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc \
         php-gettext-gettext.noarch          \
         php-phar-io-version.noarch          \
         php-theseer-tokenizer.noarch        \
-        ruby                                \
-        ruby.x86_64                         \
-        rust                                \
+        rust.x86_64                         \
         stack.x86_64                        \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip	    \
-    && python3 -m pip install -Iv gcovr==4.1 conan==1.15.1 pycrypto==2.6.1 requests==2.22.0 pyte==0.8.0
+    && python3 -m pip install -Iv gcovr==4.2 conan==1.27.1 pycrypto==2.6.1 requests==2.24.0 pyte==0.8.0
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && cd /tmp \
     && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.3/libcriterion-devel-2.3.3-2.el7.x86_64.rpm \
-    && git clone https://github.com/runkit7/runkit7.git \
-    && cd runkit7 \
-    && git checkout 84e5b5e04af239c9d79b09be1b1dc0d0ac23b477 \
-    && phpize && ./configure && make && make install \
-    && cd \
-    && rm -rf /tmp/runkit7 \
     && cd /tmp \
-    && curl -sSL "https://github.com/sbt/sbt/releases/download/v1.0.4/sbt-1.0.4.tgz" | tar xz \
+    && curl -sSL "https://github.com/sbt/sbt/releases/download/v1.3.13/sbt-1.3.13.tgz" | tar xz \
     && mv /tmp/sbt /usr/local/share \
     && ln -s '/usr/local/share/sbt/bin/sbt' '/usr/local/bin' \
-    && curl -sSL https://raw.githubusercontent.com/ocaml/opam/2.0.0-beta6/shell/opam_installer.sh | sh -s /usr/local/bin
+    && wget https://downloads.gradle-dn.com/distributions/gradle-6.5.1-bin.zip \
+    && mkdir /opt/gradle && unzip -d /opt/gradle gradle-6.5.1-bin.zip && rm -f gradle-6.5.1-bin.zip
 
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8
 

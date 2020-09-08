@@ -122,7 +122,7 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip	    \
-    && python3 -m pip install -Iv gcovr==4.2 conan==1.27.1 pycrypto==2.6.1 requests==2.24.0 pyte==0.8.0
+    && python3 -m pip install -Iv gcovr==4.2 conan==1.29.0 pycrypto==2.6.1 requests==2.24.0 pyte==0.8.0
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && cd /tmp \

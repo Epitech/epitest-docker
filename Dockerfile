@@ -2,7 +2,6 @@ FROM fedora:32
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
 
 RUN dnf -y install dnf-plugins-core         \
-        && dnf -y copr enable petersen/stack2 \
         && dnf -y install                   \
         CUnit-devel.x86_64                  \
         SDL2                                \
@@ -94,7 +93,6 @@ RUN dnf -y install dnf-plugins-core         \
 
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc \
         && wget -q -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/32/prod.repo \
-        && dnf -y copr enable petersen/stack2 \
         && dnf -y install                   \
         cargo                               \
         dotnet-sdk-3.1                      \
@@ -118,7 +116,6 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc \
         php-phar-io-version.noarch          \
         php-theseer-tokenizer.noarch        \
         rust.x86_64                         \
-        stack.x86_64                        \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip	    \
@@ -131,10 +128,11 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && curl -sSL "https://github.com/sbt/sbt/releases/download/v1.3.13/sbt-1.3.13.tgz" | tar xz \
     && mv /tmp/sbt /usr/local/share \
     && ln -s '/usr/local/share/sbt/bin/sbt' '/usr/local/bin' \
-    && wget https://downloads.gradle-dn.com/distributions/gradle-6.5.1-bin.zip \
-    && mkdir /opt/gradle && unzip -d /opt/gradle gradle-6.5.1-bin.zip && rm -f gradle-6.5.1-bin.zip
+    && wget https://downloads.gradle-dn.com/distributions/gradle-6.6.1-bin.zip \
+    && mkdir /opt/gradle && unzip -d /opt/gradle gradle-6.6.1-bin.zip && rm -f gradle-6.6.1-bin.zip \
+    && curl -sSL https://get.haskellstack.org/ | sh
 
-ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8
+ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-6.6.1/bin"
 
 COPY fs /
 

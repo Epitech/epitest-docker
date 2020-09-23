@@ -91,9 +91,7 @@ RUN dnf -y install dnf-plugins-core         \
     && dnf -y install vim                   \
     && dnf clean all -y
 
-RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc \
-        && wget -q -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/32/prod.repo \
-        && dnf -y install                   \
+RUN     dnf -y install                      \
         cargo                               \
         dotnet-sdk-3.1                      \
         ghc                                 \

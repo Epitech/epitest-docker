@@ -140,3 +140,11 @@ RUN cd /tmp \
     && bash build_csfml.sh \
     && rm -rf /tmp/* \
     && chmod 1777 /tmp
+
+RUN mkdir -pv /opt/vlang \
+    && cd /opt/vlang \
+    && git clone https://github.com/vlang/v \
+    && cd v \
+    && git checkout 6ad5ecf \
+    && make \
+    && ln -sv /opt/vlang/v /usr/local/bin/v

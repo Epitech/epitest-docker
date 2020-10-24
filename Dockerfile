@@ -143,8 +143,8 @@ RUN cd /tmp \
 
 RUN mkdir -pv /opt/vlang \
     && cd /opt/vlang \
-    && git clone https://github.com/vlang/v \
-    && cd v \
-    && git checkout 6ad5ecf \
-    && make \
-    && ln -sv /opt/vlang/v /usr/local/bin/v
+    && wget https://github.com/vlang/v/releases/download/0.1.29/v_linux.zip \
+    && unzip v_linux.zip \
+    && rm -v v_linux.zip \
+    && chmod +x ./v/v \
+    && ln -sv /opt/vlang/v/v /usr/local/bin/v

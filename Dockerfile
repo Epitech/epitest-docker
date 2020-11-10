@@ -66,6 +66,7 @@ RUN dnf -y install dnf-plugins-core         \
         qt5                                 \
         qt5-devel                           \
         rlwrap.x86_64                       \
+        ruby.x86_64                         \
         strace.x86_64                       \
         sudo.x86_64                         \
         systemd-devel                       \

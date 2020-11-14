@@ -75,6 +75,7 @@ RUN dnf -y install dnf-plugins-core         \
         tmux.x86_64                         \
         tree.x86_64                         \
         unzip.x86_64                        \
+        diffutils                           \
         valgrind.x86_64                     \
         wget.x86_64                         \
         which.x86_64                        \

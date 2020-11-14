@@ -119,7 +119,7 @@ RUN     dnf -y install                      \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip	    \
-    && python3 -m pip install -Iv gcovr==4.2 conan==1.29.0 pycrypto==2.6.1 requests==2.24.0 pyte==0.8.0 numpy==1.19.2
+    && python3 -m pip install -Iv gcovr==4.2 conan==1.31.2 pycrypto==2.6.1 requests==2.24.0 pyte==0.8.0 numpy==1.19.2
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && cd /tmp \

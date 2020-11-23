@@ -34,8 +34,8 @@ RUN dnf -y install dnf-plugins-core         \
         glibc-locale-source.x86_64          \
         glibc.x86_64                        \
         gmp-devel.x86_64                    \
-        java-latest-openjdk                 \
-        java-latest-openjdk-devel           \
+        java-11-openjdk                     \
+        java-11-openjdk-devel               \
         ksh.x86_64                          \
         langpacks-en                        \
         libX11-devel.x86_64                 \
@@ -122,6 +122,7 @@ RUN python3 -m pip install --upgrade pip	    \
     && python3 -m pip install -Iv gcovr==4.2 conan==1.31.2 pycrypto==2.6.1 requests==2.24.0 pyte==0.8.0 numpy==1.19.2
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
+    && alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.9.11-0.fc32.x86_64/bin/java \
     && cd /tmp \
     && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.3/libcriterion-devel-2.3.3-2.el7.x86_64.rpm \
     && cd /tmp \

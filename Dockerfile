@@ -123,6 +123,7 @@ RUN python3 -m pip install --upgrade pip	    \
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.9.11-0.fc32.x86_64/bin/java \
+    && alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.9.11-0.fc32.x86_64/bin/javac \
     && cd /tmp \
     && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.3/libcriterion-devel-2.3.3-2.el7.x86_64.rpm \
     && cd /tmp \

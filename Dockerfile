@@ -116,6 +116,7 @@ RUN     dnf -y install                      \
         php-phar-io-version.noarch          \
         php-theseer-tokenizer.noarch        \
         rust.x86_64                         \
+        EletricFence.x86_64                 \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip	    \

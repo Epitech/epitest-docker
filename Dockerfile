@@ -115,6 +115,8 @@ RUN     dnf -y --refresh install            \
         php-phar-io-version.noarch          \
         php-theseer-tokenizer.noarch        \
         rust.x86_64                         \
+        google-benchmark.x86_64             \
+        gmock                               \
         java-11-openjdk-11.0.9.11-9.fc32.x86_64       \
         java-11-openjdk-devel-11.0.9.11-9.fc32.x86_64 \
     && dnf clean all -y

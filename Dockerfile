@@ -8,6 +8,10 @@ RUN dnf -y upgrade                          \
         SDL2                                \
         SDL2-devel.x86_64                   \
         SDL2-static.x86_64                  \
+        SDL2_image.x86_64                   \
+        SDL2_image-devel.x86_64             \
+        SDL2_ttf                            \
+        SDL2_ttf-devel.x86_64               \
         libcaca.x86_64                      \
         libcaca-devel.x86_64                \
         SFML.x86_64                         \

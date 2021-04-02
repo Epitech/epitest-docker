@@ -14,6 +14,8 @@ RUN dnf -y upgrade                          \
         SDL2_ttf-devel.x86_64               \
         SDL2_mixer                          \
         SDL2_mixer-devel.x86_64             \
+        SDL2_gfx                            \
+        SDL2_gfx-devel.x86_64               \
         libcaca.x86_64                      \
         libcaca-devel.x86_64                \
         SFML.x86_64                         \

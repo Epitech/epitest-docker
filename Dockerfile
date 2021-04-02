@@ -135,3 +135,5 @@ ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/loc
 RUN cd /tmp \
     && rm -rf /tmp/* \
     && chmod 1777 /tmp
+
+WORKDIR /usr/app

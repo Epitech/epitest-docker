@@ -147,3 +147,5 @@ RUN cd /tmp \
     && bash build_csfml.sh \
     && rm -rf /tmp/* \
     && chmod 1777 /tmp
+
+WORKDIR /usr/app

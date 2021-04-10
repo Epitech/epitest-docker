@@ -33,6 +33,8 @@ RUN dnf -y upgrade                          \
         cmake.x86_64                        \
         curl.x86_64                         \
         elfutils-libelf-devel.x86_64        \
+        elixir                              \
+        erlang                              \
         flac-devel.x86_64                   \
         freetype-devel.x86_64               \
         gcc-c++.x86_64                      \

@@ -47,6 +47,7 @@ RUN dnf -y upgrade                          \
         langpacks-en                        \
         libX11-devel.x86_64                 \
         libXext-devel.x86_64                \
+        libXrandr.x86_64                    \
         libgudev-devel                      \
         libjpeg-turbo-devel.x86_64          \
         libtsan                             \

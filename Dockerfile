@@ -48,6 +48,9 @@ RUN dnf -y upgrade                          \
         libX11-devel.x86_64                 \
         libXext-devel.x86_64                \
         libXrandr-devel.x86_64              \
+        libXinerama-devel.x86_64            \
+        libXcursor-devel.x86_64             \
+        libXi-devel.x86_64                  \
         libgudev-devel                      \
         libjpeg-turbo-devel.x86_64          \
         libtsan                             \

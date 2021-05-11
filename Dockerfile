@@ -120,9 +120,10 @@ RUN     dnf -y --refresh install            \
         php-theseer-tokenizer.noarch        \
         rust.x86_64                         \
         bc                                  \
+        telnet                              \
         java-11-openjdk-11.0.10.0.9-0.fc32.x86_64       \
         java-11-openjdk-devel-11.0.10.0.9-0.fc32.x86_64 \
-    && dnf clean all -y
+    && dnf clean all -y \
 
 RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install -Iv gcovr==4.2 conan==1.31.2 pycrypto==2.6.1 requests==2.24.0 pyte==0.8.0 numpy==1.19.2 \

@@ -121,6 +121,7 @@ RUN     dnf -y --refresh install                        \
         rust.x86_64                                     \
         bc                                              \
         telnet                                          \
+        libuuid-devel                                   \
         java-11-openjdk-11.0.11.0.9-0.fc32.x86_64       \
         java-11-openjdk-devel-11.0.11.0.9-0.fc32.x86_64 \
     && dnf clean all -y

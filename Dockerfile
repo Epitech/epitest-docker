@@ -74,8 +74,6 @@ RUN dnf -y upgrade                          \
         python3-virtualenv-api              \
         python3.x86_64                      \
         python3-devel.x86_64                \
-        qt5                                 \
-        qt5-devel                           \
         rlwrap.x86_64                       \
         ruby.x86_64                         \
         strace.x86_64                       \

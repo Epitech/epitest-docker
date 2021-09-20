@@ -1,9 +1,11 @@
-FROM fedora:32
+FROM fedora:34
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
 
 RUN dnf -y upgrade                          \
         && dnf -y install dnf-plugins-core  \
         && dnf -y --refresh install         \
+        --setopt=tsflags=nodocs             \
+        --setopt=deltarpm=false             \
         CUnit-devel.x86_64                  \
         SDL2                                \
         SDL2-devel.x86_64                   \
@@ -74,8 +76,6 @@ RUN dnf -y upgrade                          \
         python3-virtualenv-api              \
         python3.x86_64                      \
         python3-devel.x86_64                \
-        qt5                                 \
-        qt5-devel                           \
         rlwrap.x86_64                       \
         ruby.x86_64                         \
         strace.x86_64                       \
@@ -97,8 +97,6 @@ RUN dnf -y upgrade                          \
         zsh.x86_64                          \
         gtest.x86_64                        \
         gtest-devel.x86_64                  \
-        irrlicht.x86_64                     \
-        irrlicht-devel.x86_64               \
         aalib                               \
         vim                                 \
     && dnf clean all -y
@@ -128,26 +126,27 @@ RUN     dnf -y --refresh install            \
         php-theseer-tokenizer.noarch        \
         rust.x86_64                         \
         libuuid libuuid-devel               \
-        java-11-openjdk-11.0.11.0.9-0.fc32.x86_64 \
-        java-11-openjdk-devel-11.0.11.0.9-0.fc32.x86_64 \
+        java-11-openjdk-11.0.12.0.7-4.fc34.x86_64       \
+        java-11-openjdk-devel-11.0.12.0.7-4.fc34.x86_64 \
+        bc                                              \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip \
-    && python3 -m pip install -Iv gcovr==4.2 conan==1.31.2 pycrypto==2.6.1 requests==2.24.0 pyte==0.8.0 numpy==1.19.2 \
+    && python3 -m pip install -Iv gcovr==5.0 conan==1.40.0 pycryptodome==3.10.1 requests==2.26.0 pyte==0.8.0 numpy==1.21.2 \
     && localedef -i en_US -f UTF-8 en_US.UTF-8 \
-    && alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.11.0.9-0.fc32.x86_64/bin/java \
-    && alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.11.0.9-0.fc32.x86_64/bin/javac \
+    && alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.12.0.7-4.fc34.x86_64/bin/java \
+    && alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.12.0.7-4.fc34.x86_64/bin/javac \
     && cd /tmp \
     && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.3/libcriterion-devel-2.3.3-2.el7.x86_64.rpm \
     && cd /tmp \
     && curl -sSL "https://github.com/sbt/sbt/releases/download/v1.3.13/sbt-1.3.13.tgz" | tar xz \
     && mv /tmp/sbt /usr/local/share \
     && ln -s '/usr/local/share/sbt/bin/sbt' '/usr/local/bin' \
-    && wget https://downloads.gradle-dn.com/distributions/gradle-6.6.1-bin.zip \
-    && mkdir /opt/gradle && unzip -d /opt/gradle gradle-6.6.1-bin.zip && rm -f gradle-6.6.1-bin.zip \
+    && wget https://services.gradle.org/distributions/gradle-7.2-bin.zip \
+    && mkdir /opt/gradle && unzip -d /opt/gradle gradle-7.2-bin.zip && rm -f gradle-7.2-bin.zip \
     && curl -sSL https://get.haskellstack.org/ | sh
 
-ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-6.6.1/bin"
+ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-7.2/bin"
 
 COPY fs /
 

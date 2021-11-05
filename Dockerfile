@@ -126,9 +126,9 @@ RUN     dnf -y --refresh install            \
         php-theseer-tokenizer.noarch        \
         rust.x86_64                         \
         libuuid libuuid-devel               \
-        java-11-openjdk-11.0.12.0.7-4.fc34.x86_64       \
-        java-11-openjdk-devel-11.0.12.0.7-4.fc34.x86_64 \
-        bc                                              \
+        java-11-openjdk.x86_64              \
+        java-11-openjdk-devel.x86_64        \
+        bc                                  \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip \

@@ -1,6 +1,6 @@
 FROM fedora:34
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
-
+0;10;1c
 RUN dnf -y upgrade                          \
         && dnf -y install dnf-plugins-core  \
         && dnf -y --refresh install         \
@@ -149,3 +149,7 @@ RUN python3 -m pip install --upgrade pip \
     && curl -sSL https://get.haskellstack.org/ | sh
 
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-7.2/bin"
+
+RUN cd /tmp \
+    && rm -rf /tmp/* \
+    && chmod 1777 /tmp

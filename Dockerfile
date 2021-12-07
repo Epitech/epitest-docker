@@ -22,6 +22,8 @@ RUN dnf -y upgrade                          \
         libcaca-devel.x86_64                \
         SFML.x86_64                         \
         SFML-devel.x86_64                   \
+        CSFML.x86_64                        \
+        CSFML-devel.x86_64                  \
         autoconf                            \
         automake                            \
         boost                               \
@@ -151,6 +153,5 @@ ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradl
 COPY fs /
 
 RUN cd /tmp \
-    && bash build_csfml.sh \
     && rm -rf /tmp/* \
     && chmod 1777 /tmp

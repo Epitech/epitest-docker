@@ -22,6 +22,8 @@ RUN dnf -y upgrade                          \
         libcaca-devel.x86_64                \
         SFML.x86_64                         \
         SFML-devel.x86_64                   \
+        CSFML.x86_64                        \
+        CSFML-devel.x86_64                  \
         autoconf                            \
         automake                            \
         boost                               \
@@ -147,10 +149,3 @@ RUN python3 -m pip install --upgrade pip \
     && curl -sSL https://get.haskellstack.org/ | sh
 
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-7.2/bin"
-
-COPY fs /
-
-RUN cd /tmp \
-    && bash build_csfml.sh \
-    && rm -rf /tmp/* \
-    && chmod 1777 /tmp

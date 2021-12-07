@@ -1,6 +1,6 @@
 FROM fedora:34
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
-0;10;1c
+
 RUN dnf -y upgrade                          \
         && dnf -y install dnf-plugins-core  \
         && dnf -y --refresh install         \

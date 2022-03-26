@@ -128,16 +128,16 @@ RUN     dnf -y --refresh install            \
         php-theseer-tokenizer.noarch        \
         rust.x86_64                         \
         libuuid libuuid-devel               \
-        java-11-openjdk-11.0.13.0.8-2.fc34.x86_64       \
-        java-11-openjdk-devel-11.0.13.0.8-2.fc34.x86_64 \
-        bc                                              \
+        java-11-openjdk                     \
+        java-11-openjdk-devel               \
+        bc                                  \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install -Iv gcovr==5.0 conan==1.40.0 pycryptodome==3.10.1 requests==2.26.0 pyte==0.8.0 numpy==1.21.2 \
     && localedef -i en_US -f UTF-8 en_US.UTF-8 \
-    && alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.13.0.8-2.fc34.x86_64/bin/java \
-    && alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.13.0.8-2.fc34.x86_64/bin/javac \
+    && alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.*.fc34.x86_64/bin/java \
+    && alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.*.fc34.x86_64/bin/javac \
     && cd /tmp \
     && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.3/libcriterion-devel-2.3.3-2.el7.x86_64.rpm \
     && cd /tmp \
@@ -146,7 +146,9 @@ RUN python3 -m pip install --upgrade pip \
     && ln -s '/usr/local/share/sbt/bin/sbt' '/usr/local/bin' \
     && wget https://services.gradle.org/distributions/gradle-7.2-bin.zip \
     && mkdir /opt/gradle && unzip -d /opt/gradle gradle-7.2-bin.zip && rm -f gradle-7.2-bin.zip \
-    && curl -sSL https://get.haskellstack.org/ | sh
+    && curl -sSL https://get.haskellstack.org/ | sh \
+    && curl https://sh.rustup.rs -sSf | bash -s -- -y \
+    && source $HOME/.cargo/env
 
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-7.2/bin"
 

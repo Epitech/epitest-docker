@@ -105,7 +105,6 @@ RUN dnf -y upgrade                          \
 
 # Large layer was splitted because build timeout on push to github package
 RUN     dnf -y --refresh install            \
-        cargo                               \
         dotnet-sdk-3.1                      \
         ghc                                 \
         golang                              \
@@ -126,7 +125,6 @@ RUN     dnf -y --refresh install            \
         php-gettext-gettext.noarch          \
         php-phar-io-version.noarch          \
         php-theseer-tokenizer.noarch        \
-        rust.x86_64                         \
         libuuid libuuid-devel               \
         java-11-openjdk                     \
         java-11-openjdk-devel               \

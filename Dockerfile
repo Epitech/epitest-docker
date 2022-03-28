@@ -135,10 +135,16 @@ RUN     dnf -y --refresh install            \
 
 RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install -Iv gcovr==5.0 conan==1.40.0 pycryptodome==3.10.1 requests==2.26.0 pyte==0.8.0 numpy==1.21.2 \
-    && localedef -i en_US -f UTF-8 en_US.UTF-8 \
-    && cd /tmp \
-    && rpm -ivh https://github.com/samber/criterion-rpm-package/releases/download/2.3.3/libcriterion-devel-2.3.3-2.el7.x86_64.rpm \
-    && cd /tmp \
+    && localedef -i en_US -f UTF-8 en_US.UTF-8
+
+RUN cd /tmp \
+    && curl -sSL "https://github.com/Snaipe/Criterion/releases/download/v2.4.0/criterion-2.4.0-linux-x86_64.tar.xz" -o /tmp/criterion-2.4.0.tar.xz \
+    && tar xf criterion-2.4.0.tar.xz \
+    && cp -r /tmp/criterion-2.4.0/* /usr/local/ \
+    && echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf \
+    && ldconfig
+
+RUN cd /tmp \
     && curl -sSL "https://github.com/sbt/sbt/releases/download/v1.3.13/sbt-1.3.13.tgz" | tar xz \
     && mv /tmp/sbt /usr/local/share \
     && ln -s '/usr/local/share/sbt/bin/sbt' '/usr/local/bin' \
@@ -146,7 +152,7 @@ RUN python3 -m pip install --upgrade pip \
     && mkdir /opt/gradle && unzip -d /opt/gradle gradle-7.2-bin.zip && rm -f gradle-7.2-bin.zip \
     && curl -sSL https://get.haskellstack.org/ | sh
 
-ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-7.2/bin"
+ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-7.2/bin" PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
 RUN cd /tmp \
     && rm -rf /tmp/* \

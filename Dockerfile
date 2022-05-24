@@ -150,6 +150,7 @@ RUN cd /tmp \
     && ln -s '/usr/local/share/sbt/bin/sbt' '/usr/local/bin' \
     && wget https://services.gradle.org/distributions/gradle-7.2-bin.zip \
     && mkdir /opt/gradle && unzip -d /opt/gradle gradle-7.2-bin.zip && rm -f gradle-7.2-bin.zip \
+    && echo 'export PATH=$PATH:/opt/gradle/gradle-7.2/bin' >> /etc/profile \
     && curl -sSL https://get.haskellstack.org/ | sh
 
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PATH="${PATH}:/opt/gradle/gradle-7.2/bin" PKG_CONFIG_PATH=/usr/local/lib/pkgconfig

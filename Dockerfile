@@ -95,6 +95,7 @@ RUN dnf -y upgrade                          \
 # Large layer was splitted because build timeout on push to github package
 RUN     dnf -y --refresh install            \
         ghc                                 \
+        nodejs                              \
         php.x86_64                          \
         php-devel.x86_64                    \
         php-bcmath.x86_64                   \

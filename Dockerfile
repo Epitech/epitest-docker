@@ -115,6 +115,8 @@ RUN     dnf -y --refresh install            \
         java-17-openjdk                     \
         java-17-openjdk-devel               \
         bc                                  \
+        rust                                \
+        cargo                               \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip \

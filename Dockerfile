@@ -115,6 +115,8 @@ RUN     dnf -y --refresh install            \
         java-17-openjdk                     \
         java-17-openjdk-devel               \
         bc                                  \
+        allegro5                            \
+        allegro5-devel.x86_64               \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip \
@@ -128,7 +130,7 @@ RUN cd /tmp \
     && echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf \
     && ldconfig
 
-RUN cd /tmp \ 
+RUN cd /tmp \
    && curl -sSL https://get.haskellstack.org/ | sh
 
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig

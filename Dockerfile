@@ -1,4 +1,4 @@
-FROM fedora:36
+FROM fedora:38
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
 
 RUN dnf -y upgrade                          \
@@ -118,13 +118,13 @@ RUN     dnf -y --refresh install            \
     && dnf clean all -y
 
 RUN python3 -m pip install --upgrade pip \
-    && python3 -m pip install -Iv gcovr==5.2 pycryptodome==3.15.0 requests==2.28.1 pyte==0.8.1 numpy==1.23.2 \
+    && python3 -m pip install -Iv gcovr==6.0 pycryptodome==3.18.0 requests==2.31.0 pyte==0.8.1 numpy==1.25.2 \
     && localedef -i en_US -f UTF-8 en_US.UTF-8
 
 RUN cd /tmp \
-    && curl -sSL "https://github.com/Snaipe/Criterion/releases/download/v2.4.1/criterion-2.4.1-linux-x86_64.tar.xz" -o /tmp/criterion-2.4.1.tar.xz \
-    && tar xf criterion-2.4.1.tar.xz \
-    && cp -r /tmp/criterion-2.4.1/* /usr/local/ \
+    && curl -sSL "https://github.com/Snaipe/Criterion/releases/download/v2.4.2/criterion-2.4.2-linux-x86_64.tar.xz" -o /tmp/criterion.tar.xz \
+    && tar xf criterion.tar.xz \
+    && cp -r /tmp/criterion-2.4.2/* /usr/local/ \
     && echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf \
     && ldconfig
 

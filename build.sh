@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#Force pull latest fedora:36 image
-docker pull fedora:36
+#Force pull latest fedora:38 image
+docker pull fedora:38
 
 WD=$(dirname $0)
 [ -z "$WD" ] && exit 1

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#Force pull latest fedora:38 image
-docker pull fedora:38
-
 WD=$(dirname $0)
 [ -z "$WD" ] && exit 1
 cd $(dirname $0)
@@ -90,6 +87,6 @@ echo "epitest-docker build.sh -t $TAG"
 # Build image
 
 echo ">>> Build image epitest-docker:$TAG"
-docker build$DOCKER_OPTS -t epitechcontent/epitest-docker:$TAG .
+docker build$DOCKER_OPTS --pull -t epitechcontent/epitest-docker:$TAG .
 
 [[ $? -eq 0 ]] || quit "Failed to build docker image"

@@ -6,6 +6,8 @@ RUN dnf -y upgrade                          \
         && dnf -y --refresh install         \
         --setopt=tsflags=nodocs             \
         --setopt=deltarpm=false             \
+        allegro5                            \
+        allegro5-devel.x86_64               \
         SDL2                                \
         SDL2-devel.x86_64                   \
         SDL2-static.x86_64                  \
@@ -46,6 +48,8 @@ RUN dnf -y upgrade                          \
         gmp-devel.x86_64                    \
         ksh.x86_64                          \
         langpacks-en                        \
+        libconfig                           \
+        libconfig-devel                     \
         libX11-devel.x86_64                 \
         libXext-devel.x86_64                \
         libXrandr-devel.x86_64              \
@@ -94,6 +98,8 @@ RUN dnf -y upgrade                          \
 
 # Large layer was splitted because build timeout on push to github package
 RUN     dnf -y --refresh install            \
+        cargo                               \
+        rust                                \
         ghc                                 \
         nodejs                              \
         php.x86_64                          \

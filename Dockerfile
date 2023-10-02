@@ -125,7 +125,8 @@ RUN     dnf -y --refresh install            \
 
 RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install -Iv gcovr==6.0 pycryptodome==3.18.0 requests==2.31.0 pyte==0.8.1 numpy==1.25.2 \
-    && localedef -i en_US -f UTF-8 en_US.UTF-8
+    && localedef -i en_US -f UTF-8 en_US.UTF-8 \
+    && npm install -g bun
 
 RUN cd /tmp \
     && curl -sSL "https://github.com/Snaipe/Criterion/releases/download/v2.4.2/criterion-2.4.2-linux-x86_64.tar.xz" -o /tmp/criterion.tar.xz \

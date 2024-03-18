@@ -48,6 +48,9 @@ RUN dnf -y upgrade                          \
         gmp-devel.x86_64                    \
         ksh.x86_64                          \
         langpacks-en                        \
+        libasan.x86_64                      \
+        libubsan.x86_64                     \
+        libtsan.x86_64                      \
         libconfig                           \
         libconfig-devel                     \
         libX11-devel.x86_64                 \

@@ -104,6 +104,7 @@ RUN     dnf -y --refresh install            \
         cargo                               \
         rust                                \
         ghc                                 \
+        golang                              \
         nodejs                              \
         php.x86_64                          \
         php-devel.x86_64                    \

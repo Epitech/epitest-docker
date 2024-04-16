@@ -1,4 +1,4 @@
-FROM fedora:38
+FROM fedora:39
 LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
 
 RUN dnf -y upgrade                          \

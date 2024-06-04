@@ -1,135 +1,160 @@
-FROM fedora:38
-LABEL maintainer="Thomas Dufour <thomas.dufour@epitech.eu>"
+FROM ubuntu:mantic
+LABEL maintainer="Alexandre Vanhecke <alexandre1.vanhecke@epitech.eu>"
 
-RUN dnf -y upgrade                          \
-        && dnf -y install dnf-plugins-core  \
-        && dnf -y --refresh install         \
-        --setopt=tsflags=nodocs             \
-        --setopt=deltarpm=false             \
-        allegro5                            \
-        allegro5-devel.x86_64               \
-        SDL2                                \
-        SDL2-devel.x86_64                   \
-        SDL2-static.x86_64                  \
-        SDL2_image.x86_64                   \
-        SDL2_image-devel.x86_64             \
-        SDL2_ttf                            \
-        SDL2_ttf-devel.x86_64               \
-        SDL2_mixer                          \
-        SDL2_mixer-devel.x86_64             \
-        SDL2_gfx                            \
-        SDL2_gfx-devel.x86_64               \
-        libcaca.x86_64                      \
-        libcaca-devel.x86_64                \
-        SFML.x86_64                         \
-        SFML-devel.x86_64                   \
-        CSFML.x86_64                        \
-        CSFML-devel.x86_64                  \
-        autoconf                            \
-        automake                            \
-        boost                               \
-        boost-devel.x86_64                  \
-        boost-graph                         \
-        boost-math                          \
-        boost-static.x86_64                 \
-        ca-certificates.noarch              \
-        clang.x86_64                        \
-        clang-analyzer                      \
-        cmake.x86_64                        \
-        curl.x86_64                         \
-        elfutils-libelf-devel.x86_64        \
-        gcc-c++.x86_64                      \
-        gcc.x86_64                          \
-        gdb.x86_64                          \
-        git                                 \
-        glibc-devel.x86_64                  \
-        glibc-locale-source.x86_64          \
-        glibc.x86_64                        \
-        gmp-devel.x86_64                    \
-        ksh.x86_64                          \
-        langpacks-en                        \
-        libasan.x86_64                      \
-        libubsan.x86_64                     \
-        libtsan.x86_64                      \
-        libconfig                           \
-        libconfig-devel                     \
-        libX11-devel.x86_64                 \
-        libXext-devel.x86_64                \
-        libXrandr-devel.x86_64              \
-        libXinerama-devel.x86_64            \
-        libXcursor-devel.x86_64             \
-        libXi-devel.x86_64                  \
-        libjpeg-turbo-devel.x86_64          \
-        libtsan                             \
-        llvm.x86_64                         \
-        llvm-devel.x86_64                   \
-        ltrace.x86_64                       \
-        make.x86_64                         \
-        nasm.x86_64                         \
-        ncurses-devel.x86_64                \
-        ncurses-libs                        \
-        ncurses.x86_64                      \
-        net-tools.x86_64                    \
-        nc                                  \
-        openal-soft-devel.x86_64            \
-        openssl-devel                       \
-        patch                               \
-        procps-ng.x86_64                    \
-        python3.x86_64                      \
-        python3-devel.x86_64                \
-        rlwrap.x86_64                       \
-        ruby.x86_64                         \
-        strace.x86_64                       \
-        sudo.x86_64                         \
-        systemd-devel                       \
-        tar.x86_64                          \
-        tcsh.x86_64                         \
-        tmux.x86_64                         \
-        tree.x86_64                         \
-        unzip.x86_64                        \
-        diffutils                           \
-        valgrind.x86_64                     \
-        wget.x86_64                         \
-        which.x86_64                        \
-        xcb-util-image-devel.x86_64         \
-        xcb-util-image.x86_64               \
-        xz.x86_64                           \
-        zip.x86_64                          \
-        zsh.x86_64                          \
-        vim                                 \
-    && dnf clean all -y
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
+        && apt-get update -y \
+        && apt-get install -y software-properties-common apt-utils \
+        && add-apt-repository -y -s universe \
+        && apt-get update                 \
+        && apt-get upgrade -y             \
+        && apt-get install -y             \
+        avr-libc \
+        build-essential \
+        ca-certificates \
+        ca-certificates-java \
+        cabal-install \
+        cargo \
+        clang \
+        clang-tools \
+        cmake \
+        curl \
+        diffutils \
+        docker-compose \
+        docker.io \
+        elfutils \
+        ffmpeg \
+        flac \
+        gcovr \
+        ghc \
+        golang \
+        haskell-stack \
+        ksh \
+        lib32ncurses-dev \
+        lib32ncurses6 \
+        lib32ncursesw6 \
+        lib32tinfo6 \
+        liballegro5-dev \
+        libboost1.74-all-dev \
+        libc-bin \
+        libc-dev-bin \
+        libc-devtools \
+        libc6 \
+        libc6-dbg \
+        libc6-dev-i386 \
+        libc6-dev-x32 \
+        libc6-i386 \
+        libc6-prof \
+        libc6-x32 \
+        libcsfml-audio2.5 \
+        libcsfml-dev \
+        libcsfml-doc \
+        libcsfml-graphics2.5 \
+        libcsfml-network2.5 \
+        libcsfml-system2.5 \
+        libcsfml-window2.5 \
+        libcunit1 \
+        libcunit1-dev \
+        libelf-dev \
+        libelf1 \
+        libfreetype-dev \
+        libgmp-dev \
+        libgmp10 \
+        libgmp10-doc \
+        libgmp3-dev \
+        libgmpxx4ldbl \
+        libgudev-1.0-dev \
+        libirrlicht-dev \
+        libirrlicht1.8 \
+        libjpeg-turbo8-dev \
+        libncurses-dev \
+        libopenal-data \
+        libopenal-dev \
+        libopenal1 \
+        libsdl2-dev \
+        libsfml-audio2.5 \
+        libsfml-dev \
+        libsfml-doc \
+        libsfml-graphics2.5 \
+        libsfml-network2.5 \
+        libsfml-system2.5 \
+        libsfml-window2.5 \
+        libuuid1 \
+        libvirt-dev \
+        libvorbis-dev \
+        libvorbis0a \
+        libvorbisenc2 \
+        libvorbisfile3 \
+        libx11-dev \
+        libx11-doc \
+        libx11-xcb-dev \
+        libx11-xcb1 \
+        libxcb-image0 \
+        libxcb-image0-dev \
+        libxcb-util-dev \
+        libxcb-util0-dev \
+        libxcb-util1 \
+        libxcursor-dev \
+        libxext-dev \
+        libxext-doc \
+        libxext6 \
+        libxi-dev \
+        libxinerama-dev \
+        libxrandr-dev \
+        locales \
+        ltrace \
+        nasm \
+        ncurses-base \
+        netcat-openbsd \
+        net-tools \
+        npm \
+        nodejs \
+        openjdk-21-jdk \
+        openjdk-21-jre \
+        patch \
+        php \
+        php-bcmath \
+        php-cli \
+        php-common \
+        php-dev \
+        php-gd \
+        php-mbstring \
+        php-mysql \
+        php-pear \
+        php-phar-io-version \
+        php-php-gettext  \
+        php-tokenizer \
+        php-xml \
+        python3 \
+        python3-pycryptodome \
+        python3-dev \
+        python3-numpy \
+        python3-pip \
+        python3-pyte \
+        python3-requests \
+        python3-yaml \
+        qt6-base-dev \
+        qt6-base-dev-tools \
+        rlwrap \
+        ruby \
+        rustc \
+        strace \
+        sudo \
+        systemd-dev \
+        tar \
+        tcpdump \
+        tcsh \
+        tmux \
+        tree \
+        unzip \
+        uuid-dev \
+        valgrind \
+        vim \
+        x264 \
+        zip \
+        zsh \
+        && apt-get clean -y
 
-# Large layer was splitted because build timeout on push to github package
-RUN     dnf -y --refresh install            \
-        cargo                               \
-        rust                                \
-        ghc                                 \
-        golang                              \
-        nodejs                              \
-        php.x86_64                          \
-        php-devel.x86_64                    \
-        php-bcmath.x86_64                   \
-        php-cli.x86_64                      \
-        php-devel.x86_64                    \
-        php-gd.x86_64                       \
-        php-mbstring.x86_64                 \
-        php-mysqlnd.x86_64                  \
-        php-pdo.x86_64                      \
-        php-pear.noarch                     \
-        php-pdo.x86_64                      \
-        php-xml.x86_64                      \
-        php-gettext-gettext.noarch          \
-        php-phar-io-version.noarch          \
-        php-theseer-tokenizer.noarch        \
-        libuuid libuuid-devel               \
-        java-17-openjdk                     \
-        java-17-openjdk-devel               \
-        bc                                  \
-    && dnf clean all -y
-
-RUN python3 -m pip install --upgrade pip \
-    && python3 -m pip install -Iv gcovr==6.0 pycryptodome==3.18.0 requests==2.31.0 pyte==0.8.1 numpy==1.25.2 \
-    && localedef -i en_US -f UTF-8 en_US.UTF-8 \
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && npm install -g bun
 
 RUN cd /tmp \
@@ -137,15 +162,10 @@ RUN cd /tmp \
     && tar xf criterion.tar.xz \
     && cp -r /tmp/criterion-2.4.2/* /usr/local/ \
     && echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf \
-    && ldconfig
-
-RUN cd /tmp \ 
-   && curl -sSL https://get.haskellstack.org/ | sh
-
-ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-
-RUN cd /tmp \
+    && ldconfig \
     && rm -rf /tmp/* \
     && chmod 1777 /tmp
+
+ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
 WORKDIR /usr/app

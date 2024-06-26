@@ -155,7 +155,8 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         && apt-get clean -y
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
-    && npm install -g bun
+    && npm install -g bun \
+    && stack upgrade --force-download
 
 RUN cd /tmp \
     && curl -sSL "https://github.com/Snaipe/Criterion/releases/download/v2.4.2/criterion-2.4.2-linux-x86_64.tar.xz" -o /tmp/criterion.tar.xz \

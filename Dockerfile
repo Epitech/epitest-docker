@@ -119,7 +119,8 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         zsh \
         curl \
         && apt-get clean -y \
-        && rm -rf /var/lib/apt/lists/*
+        && rm -rf /var/lib/apt/lists/* \
+        && rm -rf /usr/share/doc/*
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && npm install -g bun \

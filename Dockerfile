@@ -117,7 +117,8 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         x264 \
         zip \
         zsh \
-        && apt-get clean -y
+        && apt-get clean -y \
+        && rm -rf /var/lib/apt/lists/*
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && npm install -g bun \

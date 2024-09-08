@@ -3,11 +3,11 @@ LABEL maintainer="Alexandre Vanhecke <alexandre1.vanhecke@epitech.eu>"
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
         && apt-get update -y \
-        && apt-get install -y software-properties-common apt-utils \
+        && apt-get install -y --no-install-recommends software-properties-common apt-utils \
         && add-apt-repository -y -s universe \
         && apt-get update                 \
         && apt-get upgrade -y             \
-        && apt-get install -y             \
+        && apt-get install -y --no-install-recommends \
         avr-libc \
         build-essential \
         ca-certificates-java \
@@ -117,6 +117,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         x264 \
         zip \
         zsh \
+        curl \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/*
 

@@ -24,6 +24,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         flac \
         gcovr \
         ghc \
+        git \
         golang \
         haskell-stack \
         ksh \

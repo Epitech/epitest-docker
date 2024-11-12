@@ -121,6 +121,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         zsh \
         curl \
         lua5.4 \
+        luajit \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/* \
         && rm -rf /usr/share/doc/*

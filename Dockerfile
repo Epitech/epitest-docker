@@ -1,4 +1,4 @@
-FROM ubuntu:mantic
+FROM ubuntu:noble
 LABEL maintainer="Alexandre Vanhecke <alexandre1.vanhecke@epitech.eu>"
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
@@ -35,7 +35,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         libc-devtools \
         libc6 \
         libc6-dbg \
-        libc6-prof \
         libcsfml-dev \
         libcsfml-doc \
         libcunit1 \

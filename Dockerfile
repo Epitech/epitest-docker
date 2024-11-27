@@ -1,4 +1,4 @@
-FROM ubuntu:mantic
+FROM ubuntu:noble
 LABEL maintainer="Alexandre Vanhecke <alexandre1.vanhecke@epitech.eu>"
 
 RUN echo "deb http://old-releases.ubuntu.com/ubuntu/ mantic main restricted universe multiverse" > /etc/apt/sources.list && \
@@ -41,7 +41,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         libc-devtools \
         libc6 \
         libc6-dbg \
-        libc6-prof \
         libconfig++-dev \
         libcsfml-dev \
         libcsfml-doc \

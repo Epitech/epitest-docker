@@ -1,4 +1,4 @@
-FROM ubuntu:mantic
+FROM ubuntu:noble
 LABEL maintainer="Alexandre Vanhecke <alexandre1.vanhecke@epitech.eu>"
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
@@ -9,6 +9,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         && apt-get upgrade -y             \
         && apt-get install -y --no-install-recommends \
         avr-libc \
+        bsdmainutils \
         build-essential \
         ca-certificates-java \
         cabal-install \
@@ -35,7 +36,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         libc-devtools \
         libc6 \
         libc6-dbg \
-        libc6-prof \
         libcsfml-dev \
         libcsfml-doc \
         libcunit1 \
@@ -121,10 +121,11 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         curl \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/* \
-        && rm -rf /usr/share/doc/*
+        && rm -rf /usr/share/doc/* \
+        && localedef -i en_US -f UTF-8 en_US.UTF-8
 
-RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
-    && npm install -g bun \
+ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+RUN npm install -g bun \
     && stack upgrade --force-download
 
 RUN cd /tmp \
@@ -135,7 +136,5 @@ RUN cd /tmp \
     && ldconfig \
     && rm -rf /tmp/* \
     && chmod 1777 /tmp
-
-ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
 WORKDIR /usr/app

@@ -123,6 +123,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         zip \
         zsh \
         curl \
+        bsdextrautils \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/* \
         && rm -rf /usr/share/doc/*

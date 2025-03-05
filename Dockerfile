@@ -76,6 +76,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         libxi-dev \
         libxinerama-dev \
         libxrandr-dev \
+        liblua5.4-dev \
         locales \
         ltrace \
         nasm \
@@ -123,6 +124,8 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         zip \
         zsh \
         curl \
+        lua5.4 \
+        luajit \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/* \
         && rm -rf /usr/share/doc/*

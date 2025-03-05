@@ -102,6 +102,10 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         python3-pyte \
         python3-requests \
         python3-yaml \
+        python3-pandas \
+        python3-matplotlib \
+        python3-seaborn \
+        jupyter-notebook \
         qt6-base-dev \
         qt6-base-dev-tools \
         rlwrap \

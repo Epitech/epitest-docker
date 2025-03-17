@@ -78,6 +78,9 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         libxrandr-dev \
         locales \
         ltrace \
+        liblua5.4-dev \
+        lua5.4 \
+        luajit \
         nasm \
         ncurses-base \
         net-tools \

@@ -58,6 +58,10 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         libncurses-dev \
         libopenal-dev \
         libsdl2-dev \
+        libsdl2-ttf-dev \
+        libsdl2-mixer-dev \
+        libsdl2-image-dev \
+        libsdl2-gfx-dev \
         libsfml-dev \
         libsfml-doc \
         libuuid1 \

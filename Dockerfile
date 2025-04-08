@@ -33,6 +33,8 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         haskell-stack \
         ksh \
         liballegro5-dev \
+        liballegro-ttf5-dev \
+        liballegro-image5-dev \
         libboost1.74-all-dev \
         libc-bin \
         libc-dev-bin \

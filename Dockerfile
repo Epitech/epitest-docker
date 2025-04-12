@@ -117,6 +117,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         jupyter-notebook \
         qt6-base-dev \
         qt6-base-dev-tools \
+        qtbase5-dev \
         rlwrap \
         ruby \
         rustc \

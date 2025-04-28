@@ -42,6 +42,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         libc6 \
         libc6-dbg \
         libc6-prof \
+        libconfig++-dev \
         libcsfml-dev \
         libcsfml-doc \
         libcunit1 \

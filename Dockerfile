@@ -17,6 +17,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         ca-certificates-java \
         cabal-install \
         cargo \
+        libgtest-dev \
         clang \
         clang-tools \
         cmake \

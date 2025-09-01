@@ -3,18 +3,20 @@ LABEL maintainer="Alexandre Vanhecke <alexandre1.vanhecke@epitech.eu>"
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
         && apt-get update -y \
-        && apt-get install -y --no-install-recommends software-properties-common apt-utils \
+        && apt-get install -y --no-install-recommends software-properties-common apt-utils wget \
         && add-apt-repository -y -s universe \
         && apt-get update                 \
         && apt-get upgrade -y             \
+        && wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/llvm.asc \
+        && echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.asc] https://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | tee /etc/apt/sources.list.d/llvm.list \
+        && apt-get update \
         && apt-get install -y --no-install-recommends \
         avr-libc \
         build-essential \
         ca-certificates-java \
         cabal-install \
         cargo \
-        clang \
-        clang-tools \
+        clang-20 \
         cmake \
         diffutils \
         docker-compose \
@@ -52,7 +54,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         libgudev-1.0-dev \
         libirrlicht-dev \
         libirrlicht1.8 \
-        libjpeg-turbo8-dev \
+        libjpeg-dev \
         libncurses-dev \
         libopenal-dev \
         libsdl2-dev \
@@ -110,6 +112,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         python3-pandas \
         python3-matplotlib \
         python3-seaborn \
+        python3-clang-20 \
         jupyter-notebook \
         qt6-base-dev \
         qt6-base-dev-tools \

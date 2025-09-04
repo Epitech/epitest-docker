@@ -14,6 +14,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         epitech-full \
         clang-20 \
         python3-clang-20 \
+        locales \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/* \
         && rm -rf /usr/share/doc/*

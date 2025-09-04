@@ -20,7 +20,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         && rm -rf /usr/share/doc/*
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
-    && npm install -g bun \
     && stack upgrade --force-download
 
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig

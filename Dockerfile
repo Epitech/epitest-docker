@@ -20,8 +20,10 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         && rm -rf /usr/share/doc/*
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
-    && stack upgrade --force-download
+    && stack upgrade --force-download \
+    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100 \
+    && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100
 
-ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CC=clang CXX=clang++
 
 WORKDIR /usr/app

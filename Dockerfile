@@ -25,6 +25,12 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100 \
     && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-20 900
 
+RUN apt-get update -y \
+    && apt-get install -y banana-coding-style-checker=20250925084819 \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/share/doc/*
+
 ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CC=clang CXX=clang++
 
 WORKDIR /usr/app

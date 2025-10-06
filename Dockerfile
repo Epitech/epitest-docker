@@ -27,7 +27,7 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
 
 # Layer to update banana (and epiclang) only, check version at https://launchpad.net/~epitech/+archive/ubuntu/ppa
 RUN apt-get update -y \
-    && apt-get install -y banana-coding-style-checker=20251002143247 epiclang=20250923083404 \
+    && apt-get install -y banana-coding-style-checker=20251006131823 epiclang=20250923083404 \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /usr/share/doc/*

@@ -23,6 +23,7 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && stack upgrade --force-download \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100 \
     && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100 \
+    && update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-20 100 \
     && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-20 900
 
 # Layer to update banana (and epiclang) only, check version at https://launchpad.net/~epitech/+archive/ubuntu/ppa

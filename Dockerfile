@@ -15,6 +15,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         clang-20 \
         python3-clang-20 \
         locales \
+        libconfig++-dev \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/* \
         && rm -rf /usr/share/doc/*

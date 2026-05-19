@@ -33,6 +33,6 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /usr/share/doc/*
 
-ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CC=clang CXX=clang++
+ENV LANG=en_US.utf8 LANGUAGE=en_US:en LC_ALL=en_US.utf8 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CC=clang CXX=clang++ JUPYTER_DATA_DIR=/tmp JUPYTER_RUNTIME_DIR=/tmp MPLCONFIGDIR=/tmp
 
 WORKDIR /usr/app

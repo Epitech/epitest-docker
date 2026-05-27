@@ -11,13 +11,20 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get install -y \
-        epitech-full \
         clang-20 \
         python3-clang-20 \
-        locales \
-        && apt-get clean -y \
-        && rm -rf /var/lib/apt/lists/* \
-        && rm -rf /usr/share/doc/*
+        locales
+
+# Previously epitech-full was installed in the previous layer, now its dependencies are in split layers for performance reasons
+RUN apt-get install -y epitech-cpool
+RUN apt-get install -y epitech-premsc
+RUN apt-get install -y epitech-tek1
+RUN apt-get install -y epitech-tek2
+RUN apt-get install -y epitech-web
+
+RUN apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/share/doc/*
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && stack upgrade --force-download \

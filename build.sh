@@ -87,6 +87,6 @@ echo "epitest-docker build.sh -t $TAG"
 # Build image
 
 echo ">>> Build image epitest-docker:$TAG"
-docker build$DOCKER_OPTS --pull -t epitechcontent/epitest-docker:$TAG .
+DOCKER_BUILDKIT=1 docker build$DOCKER_OPTS --pull -t epitechcontent/epitest-docker:$TAG .
 
 [[ $? -eq 0 ]] || quit "Failed to build docker image"

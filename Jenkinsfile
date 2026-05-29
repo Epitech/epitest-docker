@@ -10,7 +10,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'epitest_docker_tag', description: 'Tag of the epitest-docker image (ignored on release)', defaultValue: 'devel')
+        string(name: 'epitest_docker_tag', description: 'Tag of the epitest-docker image (ignored on release)', defaultValue: 'testslim')
 		booleanParam(name: 'NOCACHE', description: 'Skip cache (ignored on release)', defaultValue: false)
         booleanParam(name: 'RELEASE', description: 'Release this docker image (epitest_docker_tag will be ignored and replaces by latest', defaultValue: false)
     }

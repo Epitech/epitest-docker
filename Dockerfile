@@ -1,4 +1,4 @@
-FROM ubuntu:noble
+FROM ubuntu:resolute
 LABEL maintainer="Alexandre Vanhecke <alexandre1.vanhecke@epitech.eu>"
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
@@ -6,8 +6,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
         && apt-get install -y --no-install-recommends software-properties-common apt-utils wget \
         && add-apt-repository -y -s universe \
         && add-apt-repository -y -s ppa:epitech/ppa \
-        && wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/llvm.asc \
-        && echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.asc] https://apt.llvm.org/noble/ llvm-toolchain-noble-20 main" | tee /etc/apt/sources.list.d/llvm.list \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get install -y \
@@ -35,7 +33,7 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8 \
 
 # Layer to update banana (and epiclang) only, check version at https://launchpad.net/~epitech/+archive/ubuntu/ppa
 RUN apt-get update -y \
-    && apt-get install -y banana-coding-style-checker=20260504094343 epiclang=20260407090709 \
+    && apt-get install -y banana-coding-style-checker=20260803045128 epiclang=20260803220850 \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /usr/share/doc/*
